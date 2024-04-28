@@ -90,6 +90,8 @@ class _LoginScreenState extends State<LoginScreen> implements LoginNavigator {
                     height: 10,
                     width: 10,
                   ),
+
+                  
                   Form(
                     key: formkey,
                     child: CustomTextFormField(
@@ -110,6 +112,9 @@ class _LoginScreenState extends State<LoginScreen> implements LoginNavigator {
                         controller: emailcontroller,
                         hintText: "Please Enter Your Email"),
                   ),
+
+
+
                   const SizedBox(
                     height: 20,
                     width: 10,
@@ -140,17 +145,7 @@ class _LoginScreenState extends State<LoginScreen> implements LoginNavigator {
                       title: "Login",
                       onPressed: () {
                         Login();
-                        /*
-
-Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const BookNow(),
-                            )
-                            );
-
-
-                        */
+                      
                       }),
                   const SizedBox(
                     height: 20,

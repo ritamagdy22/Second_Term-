@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:smart_parking_app/UI/ForgetPassword/ForgetPasswordByEmail.dart';
-import 'ResetForgetPasswordCode.dart';
+import 'package:smart_parking_app/UI/Password&ConfirmPassword/NewPassword_ConfirmPassword.dart';
+import 'package:smart_parking_app/UI/ResetByEmail/ResetByEmail.dart';
+import '../RecivingCode/ResetForgetPasswordCode.dart';
 import '../../widget/AppBarDetails.dart';
 import '../../widget/Custom_Button.dart';
 import '../LoginScreen/LoginScreen.dart';
@@ -33,7 +34,7 @@ class ForgetPAssword extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
                 // Add horizontal padding
                 child: Text(
-                  "Select which Contact Details we have to use to reset your Password",
+                  "We will reset it password by email",
                   style: TextStyle(
                     fontSize: 16, // Adjust the font size if needed
                   ),
@@ -101,9 +102,12 @@ class ForgetPAssword extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const LoginScreen(),
-                            ));
-                      }))
+                              builder: (context) => ResetByEmail(),
+                            )
+                            );
+                      }
+                      )
+                      )
             ],
           ),
         );

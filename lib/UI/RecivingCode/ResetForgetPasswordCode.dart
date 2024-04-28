@@ -3,8 +3,10 @@ import 'package:flutter/services.dart';
 
 import '../../widget/AppBarDetails.dart';
 
-class ForgetPasswordByPhoneNumber extends StatelessWidget {
-  const ForgetPasswordByPhoneNumber({super.key});
+class Recivingcode extends StatelessWidget {
+  const Recivingcode({super.key});
+
+  static const RecivingCode = "RecivingCode";
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +36,21 @@ class ForgetPasswordByPhoneNumber extends StatelessWidget {
                       fontSize: 20,
                       color: Colors.black,
                     )),
+
+/*
+const SizedBox(
+                  height: 12,
+                ),
+                  const Text(
+                    "Please Enter Verificaton code that had been sent to your email",
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                    
+                    )
+                    ),
+*/
+
                 const SizedBox(
                   height: 15,
                 ),
