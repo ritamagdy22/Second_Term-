@@ -36,14 +36,6 @@ class _ResetByEmailState extends State<ResetByEmail> {
             padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 18),
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              const SizedBox(
-                height: 10,
-              ),
-              Image.asset('assets/images/LoginText.png',
-                  alignment: Alignment.center),
-              const SizedBox(
-                height: 30,
-              ),
               FormLabelWidget(Label: "Email Address"),
               const SizedBox(
                 height: 10,
@@ -69,9 +61,7 @@ class _ResetByEmailState extends State<ResetByEmail> {
                     controller: ResetByEmailController,
                     hintText: "Please Enter Your Email"),
               ),
-
-
- const SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Padding(
@@ -84,15 +74,9 @@ class _ResetByEmailState extends State<ResetByEmail> {
                             context,
                             MaterialPageRoute(
                               builder: (context) => Recivingcode(),
-                            )
-                            );
-                      }
-                      )
-                      )
-
-
-            ]
-            ),
+                            ));
+                      }))
+            ]),
           ),
         ));
   }

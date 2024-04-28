@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:smart_parking_app/ApiManager/Request/ForgetPasswordRequest.dart';
 import 'package:smart_parking_app/ApiManager/Response/ForgetPAsswordResponse.dart';
 import 'package:smart_parking_app/Repository/Authentication/AuthenticationRepositoryContract.dart';
-import 'package:smart_parking_app/UI/ForgetPassword/ForgetNavigator.dart';
+import 'package:smart_parking_app/UI/Password&ConfirmPassword/ForgetNavigator.dart';
 
 class ForgetPasswordViewModel extends ChangeNotifier {
   AuthenticationRepositoryContract repositoryContract;
