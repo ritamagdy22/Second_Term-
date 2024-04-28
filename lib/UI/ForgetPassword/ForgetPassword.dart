@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_parking_app/UI/ForgetPassword/ForgetPasswordByEmail.dart';
-import 'Forget_password_PhoneNumber.dart';
+import 'ResetForgetPasswordCode.dart';
 import '../../widget/AppBarDetails.dart';
 import '../../widget/Custom_Button.dart';
 import '../LoginScreen/LoginScreen.dart';

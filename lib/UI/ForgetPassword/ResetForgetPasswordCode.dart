@@ -28,7 +28,8 @@ class ForgetPasswordByPhoneNumber extends StatelessWidget {
                 const SizedBox(
                   height: 12,
                 ),
-                const Text("We have sent the verification code to",
+                const Text(
+                    "Please Enter Verificaton code that had been sent to your email",
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.black,
@@ -38,7 +39,7 @@ class ForgetPasswordByPhoneNumber extends StatelessWidget {
                 ),
                 RichText(
                   text: const TextSpan(
-                      text: "+98********56  ",
+                      text: "----- @gmail.com",
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -55,36 +56,6 @@ class ForgetPasswordByPhoneNumber extends StatelessWidget {
                 const SizedBox(
                   height: 15,
                 ),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                //   children: List.generate(4, (index) {
-                //     return SizedBox(
-                //       width: 65,
-                //       height: 65,
-                //       child: TextFormField(
-                //         onChanged: (value) {
-                //           if (value.length == 1 && index  != 3) {
-                //             FocusScope.of(context).nextFocus();
-                //           } else if (value.length == 1) {
-                //             FocusManager.instance.primaryFocus?.unfocus();
-                //           }
-                //         },
-                //         decoration: textFormFieldDecoration,
-                //         cursorColor: Colors.black87,
-                //         textAlign: TextAlign.center,
-                //         cursorHeight: 30.0,
-                //         maxLines: 1,
-                //         keyboardType: TextInputType.text,
-                //         inputFormatters: [
-                //           LengthLimitingTextInputFormatter(1),
-                //           FilteringTextInputFormatter.digitsOnly
-                //         ],
-                //       ),
-                //     );
-                //   },
-                //   ),
-              
-                // ),
               ],
             ),
           ),
