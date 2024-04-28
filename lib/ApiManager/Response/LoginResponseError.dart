@@ -1,11 +1,11 @@
 
-class LoginResponseError {
+class LoginResponseErrorModel {
   String? message;
   String? stack;
 
-  LoginResponseError({this.message, this.stack});
+  LoginResponseErrorModel({this.message, this.stack});
 
-  LoginResponseError.fromJson(Map<String, dynamic> json) {
+  LoginResponseErrorModel.fromJson(Map<String, dynamic> json) {
     if(json["message"] is String) {
       message = json["message"];
     }

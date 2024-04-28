@@ -1,3 +1,4 @@
+import 'package:smart_parking_app/ApiManager/Request/ForgetPasswordRequest.dart';
 import 'package:smart_parking_app/ApiManager/Response/ForgetPAsswordResponse.dart';
 import 'package:smart_parking_app/ApiManager/Response/LoginResponse.dart';
 import 'package:smart_parking_app/ApiManager/Response/RegisterResponse.dart';
@@ -13,18 +14,19 @@ abstract class AuthenticationRepositoryContract {
   Future<String?> login(String email, String password);
 
   // ToDo : Method ForgetPasswordByEmail
-  Future<String?> ForgetPassword(String NewPassword, String ConfirmNewPassword);
+  Future<String?> ForgetPassword(
+      ForgetPasswordRequestModel forgetPasswordRequest);
 }
 
 // another abstarct calss preparing the data from model class
 abstract class AuthReomteDataSource {
-  Future<RegisterResponse> register(String name, String phone, String email,
-      String password, String confirmPassword);
-  Future<LoginResponse> login(String email, String password);
+  Future<RegisterResponseModel> register(String name, String phone,
+      String email, String password, String confirmPassword);
+  Future<LoginResponseModel> login(String email, String password);
 
   // ToDo Method : ForgetPasswordByEmail
-  Future<ForgetPasswordResponse> forgetPassword(
-      String newPass, String confrimNewPass);
+  Future<ForgetPasswordResponseModel> forgetPassword(
+      ForgetPasswordRequestModel forgetPasswordRequest);
 }
 
 AuthenticationRepositoryContract injectAuthRepository() {

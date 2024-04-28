@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:smart_parking_app/ApiManager/Request/ForgetPasswordRequest.dart';
+import 'package:smart_parking_app/ApiManager/Response/ForgetPAsswordResponse.dart';
 import 'package:smart_parking_app/Repository/Authentication/AuthenticationRepositoryContract.dart';
 import 'package:smart_parking_app/UI/ForgetPassword/ForgetNavigator.dart';
 import 'package:smart_parking_app/UI/ForgetPassword/ForgetViewModel.dart';
@@ -161,12 +163,13 @@ class _ForgetPasswordByEmailState extends State<ForgetPasswordByEmail>
 
   void ForgetPassword() {
     if (formKey.currentState!.validate()) {
-      viewModel.ForgetPassword(
-        confirmPasswordController.text,
-        newPasswordController.text,
+      final model = ForgetPasswordRequestModel(
+        //   email: ,git
+        //   code:  ,
+        confirmPassword: newPasswordController.text,
+        //    password: ,
       );
+      viewModel.ForgetPassword(model);
     }
   }
-
-
 }

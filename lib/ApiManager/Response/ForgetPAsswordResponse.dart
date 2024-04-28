@@ -1,10 +1,10 @@
-class ForgetPasswordResponse {
+class ForgetPasswordResponseModel {
   String? message;
   String? stack;
 
-  ForgetPasswordResponse({this.message, this.stack});
+  ForgetPasswordResponseModel({this.message, this.stack});
 
-  ForgetPasswordResponse.fromJson(Map<String, dynamic> json) {
+  ForgetPasswordResponseModel.fromJson(Map<String, dynamic> json) {
     message = json["message"];
     stack = json["stack"];
   }

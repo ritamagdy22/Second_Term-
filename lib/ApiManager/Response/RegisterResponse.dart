@@ -1,11 +1,10 @@
-
-class RegisterResponse {
+class RegisterResponseModel {
   String? message;
   String? stack;
 
-  RegisterResponse({this.message, this.stack});
+  RegisterResponseModel({this.message, this.stack});
 
-  RegisterResponse.fromJson(Map<String, dynamic> json) {
+  RegisterResponseModel.fromJson(Map<String, dynamic> json) {
     message = json["message"];
     stack = json["stack"];
   }
@@ -17,4 +16,3 @@ class RegisterResponse {
     return _data;
   }
 }
-

@@ -1,4 +1,6 @@
 import 'package:flutter/foundation.dart';
+import 'package:smart_parking_app/ApiManager/Request/ForgetPasswordRequest.dart';
+import 'package:smart_parking_app/ApiManager/Response/ForgetPAsswordResponse.dart';
 import 'package:smart_parking_app/Repository/Authentication/AuthenticationRepositoryContract.dart';
 import 'package:smart_parking_app/UI/ForgetPassword/ForgetNavigator.dart';
 
@@ -10,12 +12,12 @@ class ForgetPasswordViewModel extends ChangeNotifier {
   ForgetPasswordViewModel(this.repositoryContract);
 //Todo function
 
-  ForgetPassword(String NewPassword, String ConfirmNewPassword) async {
+  ForgetPassword(ForgetPasswordRequestModel forgetPasswordRequest) async {
     navigator.showLoading();
 
     try {
-      var response = await repositoryContract.ForgetPassword(
-          NewPassword, ConfirmNewPassword);
+      var response =
+          await repositoryContract.ForgetPassword(forgetPasswordRequest);
       navigator.hideLoading();
       navigator.showMessage("password reset succesfflly");
     } catch (e) {

@@ -1,13 +1,14 @@
-
-class ForgetPasswordRequest {
+class ForgetPasswordRequestModel {
   String? code;
   String? password;
   String? confirmPassword;
   String? email;
+  String? anithing;
 
-  ForgetPasswordRequest({this.code, this.password, this.confirmPassword, this.email});
+  ForgetPasswordRequestModel(
+      {this.code, this.password, this.confirmPassword, this.email});
 
-  ForgetPasswordRequest.fromJson(Map<String, dynamic> json) {
+  ForgetPasswordRequestModel.fromJson(Map<String, dynamic> json) {
     code = json["code"];
     password = json["password"];
     confirmPassword = json["confirmPassword"];

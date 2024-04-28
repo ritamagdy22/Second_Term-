@@ -1,11 +1,10 @@
-
-class LoginRequest {
+class LoginRequestModel {
   String? email;
   String? password;
 
-  LoginRequest({this.email, this.password});
+  LoginRequestModel({this.email, this.password});
 
-  LoginRequest.fromJson(Map<String, dynamic> json) {
+  LoginRequestModel.fromJson(Map<String, dynamic> json) {
     email = json["email"];
     password = json["password"];
   }

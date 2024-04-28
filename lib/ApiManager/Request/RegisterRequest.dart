@@ -1,14 +1,14 @@
-
-class RegisterRequest {
+class RegisterRequestModel {
   String? name;
   String? email;
   String? password;
   String? confirmPassword;
   String? phone;
 
-  RegisterRequest({this.name, this.email, this.password, this.confirmPassword, this.phone});
+  RegisterRequestModel(
+      {this.name, this.email, this.password, this.confirmPassword, this.phone});
 
-  RegisterRequest.fromJson(Map<String, dynamic> json) {
+  RegisterRequestModel.fromJson(Map<String, dynamic> json) {
     name = json["name"];
     email = json["email"];
     password = json["password"];

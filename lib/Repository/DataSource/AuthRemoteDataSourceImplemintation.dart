@@ -1,5 +1,6 @@
 import 'package:http/http.dart';
 import 'package:smart_parking_app/ApiManager/ApiManager.dart';
+import 'package:smart_parking_app/ApiManager/Request/ForgetPasswordRequest.dart';
 import 'package:smart_parking_app/ApiManager/Response/ForgetPAsswordResponse.dart';
 import 'package:smart_parking_app/ApiManager/Response/LoginResponse.dart';
 import 'package:smart_parking_app/ApiManager/Response/RegisterResponse.dart';
@@ -12,24 +13,23 @@ class AuthRemoteDataSourceImpl implements AuthReomteDataSource {
   AuthRemoteDataSourceImpl(this.apiManager);
 
   @override
-  Future<LoginResponse> login(String email, String password) async {
+  Future<LoginResponseModel> login(String email, String password) async {
     var response = await apiManager.login(email, password);
     return response;
   }
 
   @override
-  Future<RegisterResponse> register(String name, String phone, String email,
-      String password, String confirmPassword) async {
+  Future<RegisterResponseModel> register(String name, String phone,
+      String email, String password, String confirmPassword) async {
     var response = await apiManager.register(
         name, phone, email, password, confirmPassword);
     return response;
   }
 
   @override
-  Future<ForgetPasswordResponse> forgetPassword(
-      String newPass, String confrimNewPass) async {
-    var response =
-        await apiManager.ForgetPassword(newPass, confrimNewPass);
+  Future<ForgetPasswordResponseModel> forgetPassword(
+      ForgetPasswordRequestModel forgetPasswordRequest) async {
+    var response = await apiManager.ForgetPassword(forgetPasswordRequest);
     return response;
   }
 }
