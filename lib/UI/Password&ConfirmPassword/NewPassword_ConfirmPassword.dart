@@ -10,14 +10,16 @@ import 'package:smart_parking_app/widget/DialogUtils.dart';
 import 'package:smart_parking_app/widget/Form_Label_Widget.dart';
 import 'package:smart_parking_app/widget/custom_Text_FormField.dart';
 
-class ForgetPasswordByEmail extends StatefulWidget {
-  ForgetPasswordByEmail({Key? key}) : super(key: key);
+class Password_and_ConfirmPassword extends StatefulWidget {
+  Password_and_ConfirmPassword({Key? key}) : super(key: key);
 
   @override
-  State<ForgetPasswordByEmail> createState() => _ForgetPasswordByEmailState();
+  State<Password_and_ConfirmPassword> createState() =>
+      _Password_and_ConfirmPasswordState();
 }
 
-class _ForgetPasswordByEmailState extends State<ForgetPasswordByEmail>
+class _Password_and_ConfirmPasswordState
+    extends State<Password_and_ConfirmPassword>
     implements ForgetPasswordNavigator {
   TextEditingController newPasswordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();

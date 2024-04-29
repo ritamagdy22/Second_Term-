@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:smart_parking_app/UI/RecivingCode/ResetForgetPasswordCode.dart';
+import 'package:smart_parking_app/UI/RecivingCode/RecivingCode.dart';
 import 'package:smart_parking_app/widget/Custom_Button.dart';
 import 'package:smart_parking_app/widget/Form_Label_Widget.dart';
 import 'package:smart_parking_app/widget/custom_Text_FormField.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_parking_app/UI/Password&ConfirmPassword/NewPassword_ConfirmPassword.dart';
 import 'package:smart_parking_app/UI/ResetByEmail/ResetByEmail.dart';
-import '../RecivingCode/ResetForgetPasswordCode.dart';
+import '../RecivingCode/RecivingCode.dart';
 import '../../widget/AppBarDetails.dart';
 import '../../widget/Custom_Button.dart';
 import '../LoginScreen/LoginScreen.dart';
@@ -51,7 +51,9 @@ class ForgetPAssword extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ForgetPasswordByEmail(),
+                          // navigating to resetbyemail to let user enter his email and then navigating to receive code and finally password & confirmpassword
+
+                          builder: (context) => ResetByEmail(),
                         ));
                   },
                   style: ButtonStyle(
@@ -103,11 +105,8 @@ class ForgetPAssword extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (context) => ResetByEmail(),
-                            )
-                            );
-                      }
-                      )
-                      )
+                            ));
+                      }))
             ],
           ),
         );
