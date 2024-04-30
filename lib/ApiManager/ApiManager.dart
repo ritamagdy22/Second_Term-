@@ -11,6 +11,7 @@ import 'package:smart_parking_app/ApiManager/Response/ForgetPAsswordResponse.dar
 import 'package:smart_parking_app/ApiManager/Response/LoginResponse.dart';
 import 'package:smart_parking_app/ApiManager/Response/RegisterResponse.dart';
 import 'package:smart_parking_app/ApiManager/Response/ResponseCode.dart';
+import 'package:smart_parking_app/UI/ResetByEmail/ResetByEmail.dart';
 
 class HttpClient {
   static Future<dynamic> post(String url, {Map? data}) async {
@@ -168,6 +169,4 @@ class ApiManager {
 
     return ForgetPasswordResponseModel.fromJson(jsonDecode(response.body));
   }
-
-  //
 }

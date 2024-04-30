@@ -1,5 +1,6 @@
 import 'dart:ui';
-abstract class ForgetPasswordNavigator {
+
+abstract class ResetByEmailNavigator {
   void showLoading();
   void hideLoading();
   void showMessage(

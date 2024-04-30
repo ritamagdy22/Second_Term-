@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_parking_app/ApiManager/Request/ForgetPasswordRequest.dart';
+import 'package:smart_parking_app/ApiManager/Request/RequestCode.dart';
 import 'package:smart_parking_app/ApiManager/Response/ForgetPAsswordResponse.dart';
 import 'package:smart_parking_app/Repository/Authentication/AuthenticationRepositoryContract.dart';
 
@@ -27,5 +28,11 @@ class AuthREpositoryImpl implements AuthenticationRepositoryContract {
     // TODO: implement ForgetPassword
     var response = await reomteDataSource.forgetPassword(forgetPasswordRequest);
     return response.message;
+  }
+
+  @override
+  Future<String?> ResetByEmail(RequestCodeModel requestCodeModel) async {
+    var response = await reomteDataSource.ResetByEmail(requestCodeModel);
+    return response;
   }
 }
