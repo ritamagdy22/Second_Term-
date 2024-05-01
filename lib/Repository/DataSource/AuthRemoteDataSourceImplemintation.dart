@@ -35,7 +35,7 @@ class AuthRemoteDataSourceImpl implements AuthReomteDataSource {
     return response;
   }
 //Facing error in implemintation
-  
+
   @override
   Future<String?> ResetByEmail(RequestCodeModel requestCodeModel) {
     // TODO: implement ResetByEmail
@@ -51,7 +51,6 @@ AuthReomteDataSource injectAuthRemoteDataSource() {
 
 ApiManager injectApiManager() {
   return ApiManager();
-}
 
 /*
 class AuthReomteDataSource having special method of 
@@ -59,3 +58,4 @@ injectAuthRemoteDataSource return class AuthRemoteDataSourceImpl that have injec
 what is injectApiManager ? 
 it's a method created to call apimanger class methods 
 */
+}

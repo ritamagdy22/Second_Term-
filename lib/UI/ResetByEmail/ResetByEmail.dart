@@ -139,26 +139,3 @@ class _ResetByEmailState extends State<ResetByEmail>
 
 
 
-/*
-                  Form(
-                    key: formkey,
-                    child: CustomTextFormField(
-                        isPassword: false,
-                        Type: TextInputType.emailAddress,
-                        validator: (text) {
-                          if (text == null || text.trim().isEmpty) {
-                            return "Please Enter your Email";
-                          }
-                          var emailvalid = RegExp(
-                                  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                              .hasMatch(text);
-                          if (!emailvalid) {
-                            return "Email not valid";
-                          }
-                          return null;
-                        },
-                        controller: emailcontroller,
-                        hintText: "Please Enter Your Email"),
-                  ),
-
-*/

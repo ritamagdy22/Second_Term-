@@ -30,15 +30,14 @@ abstract class AuthReomteDataSource {
   // ToDo Method : ForgetPasswordByEmail
   Future<ForgetPasswordResponseModel> forgetPassword(
       ForgetPasswordRequestModel forgetPasswordRequest);
-// Todo Method : Reset ByEmail 
+// Todo Method : Reset ByEmail
   Future<String?> ResetByEmail(RequestCodeModel requestCodeModel);
 }
 
 AuthenticationRepositoryContract injectAuthRepository() {
   return AuthREpositoryImpl(injectAuthRemoteDataSource());
-}
 
-/*
+  /*
 dependency injection : 
 we made function named (injectAuthRepository) from class type AuthenticationRepositoryContract
 return AuthREpositoryImpl ( which is have all implemintation of the methods )
@@ -54,3 +53,4 @@ ApiManager injectApiManager() {
 
 
 */
+}
