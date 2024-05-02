@@ -31,8 +31,14 @@ class AuthREpositoryImpl implements AuthenticationRepositoryContract {
   }
 
   @override
-  Future<String?> ResetByEmail(RequestCodeModel requestCodeModel) async {
-    var response = await reomteDataSource.ResetByEmail(requestCodeModel);
-    return response;
+  Future<String?> ResetByEmail(String email) async {
+    var response = await reomteDataSource.ResetByEmail(email);
+    return response!.message;
   }
 }
+/*
+Future<String?> login(String email, String password) async {
+    var response = await reomteDataSource.login(email, password);
+    return response.message;
+  }
+ */

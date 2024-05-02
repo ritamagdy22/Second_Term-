@@ -1,7 +1,4 @@
 
-// Copyright 2014 The Flutter Authors. All rights reserved.
-
-
 class ResponseCodeModel {
   String? message;
 

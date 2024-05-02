@@ -6,14 +6,11 @@ import 'package:smart_parking_app/UI/LoginScreen/LoginNavigator.dart';
 class LoginViewModel extends ChangeNotifier {
   AuthenticationRepositoryContract repositoryContract;
   late LoginNavigator navigator;
-
   LoginViewModel(
     this.repositoryContract,
   );
-
   Login(String email, String password) async {
     navigator.showLoading();
-
     try {
       var response = await repositoryContract.login(email, password);
       navigator.hideLoading();

@@ -37,7 +37,7 @@ class AuthRemoteDataSourceImpl implements AuthReomteDataSource {
 //Facing error in implemintation
 
   @override
-  Future<String?> ResetByEmail(RequestCodeModel requestCodeModel) {
+  Future<ResponseCodeModel?> ResetByEmail(email) {
     // TODO: implement ResetByEmail
     throw UnimplementedError();
   }

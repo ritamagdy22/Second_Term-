@@ -75,28 +75,6 @@ class Recivingcode extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            RichText(
-                              text: const TextSpan(
-                                  text: "----- @gmail.com",
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.black,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                        text: "Change Phone number?",
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                          color: Colors.red,
-                                        ))
-                                  ]),
-                            ),
-                            const SizedBox(
-                              height: 15,
-                            ),
                           ],
                         ),
                       ]),
@@ -105,24 +83,3 @@ class Recivingcode extends StatelessWidget {
             )));
   }
 }
-
-/*
-InputDecoration textFormFieldDecoration = InputDecoration(
-  hintText: "0",
-  enabledBorder: OutlineInputBorder(
-    borderRadius: BorderRadius.circular(10),
-    borderSide: const BorderSide(
-      width: 2,
-      color: Colors.black87,
-    ),
-  ),
-  focusedBorder: OutlineInputBorder(
-    borderRadius: BorderRadius.circular(15),
-    borderSide: const BorderSide(
-      width: 3,
-      color: Colors.black87,
-    ),
-  ),
-);
-
-*/
