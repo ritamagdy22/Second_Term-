@@ -21,6 +21,7 @@ class ResetByEmailViewModel extends ChangeNotifier {
     } catch (e) {
       navigator.hideLoading();
       navigator.showMessage(e.toString() + " error to send code ");
+
     }
   }
 }
