@@ -37,14 +37,15 @@ class AuthRemoteDataSourceImpl implements AuthReomteDataSource {
 //Facing error in implemintation
 
   @override
-  Future<String?> ResetByEmail(RequestCodeModel requestCodeModel) {
-    // TODO: implement ResetByEmail
-    throw UnimplementedError();
+  Future<ResponseCodeModel?> ResetByEmail(email)async {
+    var response = await apiManager.ResetByEmail(email);
+    return response;
+
   }
 }
 
 //ToDo Function ResetPassword
-
+//creating function named  injectAuthRemoteDataSource returning  AuthRemoteDataSourceImpl
 AuthReomteDataSource injectAuthRemoteDataSource() {
   return AuthRemoteDataSourceImpl(injectApiManager());
 }

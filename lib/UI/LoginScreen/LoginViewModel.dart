@@ -10,10 +10,8 @@ class LoginViewModel extends ChangeNotifier {
   LoginViewModel(
     this.repositoryContract,
   );
-
   Login(String email, String password) async {
     navigator.showLoading();
-
     try {
       var response = await repositoryContract.login(email, password);
       navigator.hideLoading();

@@ -6,12 +6,13 @@ import 'package:http/http.dart' as http;
 import 'package:smart_parking_app/ApiManager/Request/ForgetPasswordRequest.dart';
 import 'package:smart_parking_app/ApiManager/Request/LoginRequest.dart';
 import 'package:smart_parking_app/ApiManager/Request/RegisterRequest.dart';
-import 'package:smart_parking_app/ApiManager/Request/RequestCode.dart';
 import 'package:smart_parking_app/ApiManager/Response/ForgetPAsswordResponse.dart';
 import 'package:smart_parking_app/ApiManager/Response/LoginResponse.dart';
 import 'package:smart_parking_app/ApiManager/Response/RegisterResponse.dart';
 import 'package:smart_parking_app/ApiManager/Response/ResponseCode.dart';
 import 'package:smart_parking_app/UI/ResetByEmail/ResetByEmail.dart';
+
+import 'Request/RequestCode.dart';
 
 class HttpClient {
   static Future<dynamic> post(String url, {Map? data}) async {
@@ -47,10 +48,6 @@ class ApiManager {
   Future<RegisterResponseModel> register(String name, String phone,
       String email, String password, String confirmPassword) async {
     Uri url = Uri.parse(ApiConstants.BaseURl + ApiConstants.SignupApi);
-    /*
-    Adding RegisterRequest constructor to be saved in requestbody variable
-    */
-
     var requestBody = RegisterRequestModel(
       name: name,
       password: password,
@@ -58,7 +55,6 @@ class ApiManager {
       confirmPassword: confirmPassword,
       phone: phone,
     );
-
     var response = await http.post(
       /*
       Using the required method POST to be saved in response variable 
@@ -77,7 +73,6 @@ class ApiManager {
     debugPrint('> path: ${url.toString()}');
     debugPrint('> body: ${requestBody.toJson()}');
     debugPrint('> response: [${response.statusCode}] ${responseString}');
-
     if (response.statusCode == 200) {
       // Successful response, parse the JSON
       var responseData = jsonDecode(responseString);
@@ -86,7 +81,6 @@ class ApiManager {
       // Error response, parse the error message
       var responseData = jsonDecode(responseString);
       var errorMessage = responseData['message'];
-
       if (errorMessage == 'user already exist') {
         // Handle case where user already exists
         return RegisterResponseModel(message: 'User already exists');
@@ -105,7 +99,6 @@ class ApiManager {
     var requestbody = LoginRequestModel(email: email, password: password);
     debugPrint('> path: ${url.toString()}');
     debugPrint('> body: ${requestbody.toJson()}');
-
     var response = await http.post(
       url,
       body: json.encode(requestbody.toJson()),
@@ -113,9 +106,7 @@ class ApiManager {
         'Content-Type': 'application/json',
       },
     );
-
     debugPrint('> response: [${response.statusCode}] ${response.body}');
-
     if (response.statusCode != 200) {
       throw Exception(
           jsonDecode(response.body)?['message'] ?? 'Error occurred!');
@@ -123,12 +114,11 @@ class ApiManager {
     return LoginResponseModel.fromJson(jsonDecode(response.body));
   }
 
-  Future<ResponseCodeModel> requestCode(String email) async {
+  Future<ResponseCodeModel> ResetByEmail(String email) async {
     var url = Uri.parse(ApiConstants.BaseURl + ApiConstants.RequestCode);
     var requestbody = RequestCodeModel(email: email);
     debugPrint('> path: ${url.toString()}');
     debugPrint('> body: ${requestbody.toJson()}');
-
     var response = await http.patch(
       url,
       body: json.encode(requestbody.toJson()),
@@ -136,22 +126,18 @@ class ApiManager {
         'Content-Type': 'application/json',
       },
     );
-
     debugPrint('> response: [${response.statusCode}] ${response.body}');
-
     if (response.statusCode != 200) {
       throw Exception(
           jsonDecode(response.body)?['message'] ?? 'Error occurred!');
     }
     return ResponseCodeModel.fromJson(jsonDecode(response.body));
   }
-
   Future<ForgetPasswordResponseModel> ForgetPassword(
       ForgetPasswordRequestModel forgetPasswordRequest) async {
     var url = Uri.parse(ApiConstants.BaseURl + ApiConstants.ForgetPasswordApi);
     debugPrint('> path: ${url.toString()}');
     debugPrint('> body: ${forgetPasswordRequest.toJson()}');
-
     var response = await http.post(
       url,
       body: json.encode(forgetPasswordRequest.toJson()),
@@ -159,9 +145,7 @@ class ApiManager {
         'Content-Type': 'application/json',
       },
     );
-
     debugPrint('> response: [${response.statusCode}] ${response.body}');
-
     if (response.statusCode != 200) {
       throw Exception(
           jsonDecode(response.body)?['message'] ?? 'Error occurred!');

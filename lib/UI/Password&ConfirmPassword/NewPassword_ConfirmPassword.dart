@@ -109,8 +109,8 @@ class _Password_and_ConfirmPasswordState
                 const SizedBox(height: 20),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.black,
-                    onPrimary: Colors.white,
+                    backgroundColor: Colors.black,
+                    disabledBackgroundColor: Colors.white,
                     padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
                   ),
                   onPressed: () {
@@ -166,10 +166,11 @@ class _Password_and_ConfirmPasswordState
   void ForgetPassword() {
     if (formKey.currentState!.validate()) {
       final model = ForgetPasswordRequestModel(
-        //   email: ,git
-        //   code:  ,
+           email: AutofillHints.email,
+          //ToDo
+          // code:  ,
         confirmPassword: newPasswordController.text,
-        //    password: ,
+            password: newPasswordController.text,
       );
       viewModel.ForgetPassword(model);
     }
