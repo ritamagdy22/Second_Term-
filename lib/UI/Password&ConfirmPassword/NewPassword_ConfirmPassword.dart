@@ -166,10 +166,11 @@ class _Password_and_ConfirmPasswordState
   void ForgetPassword() {
     if (formKey.currentState!.validate()) {
       final model = ForgetPasswordRequestModel(
-        //   email: ,git
-        //   code:  ,
+           email: AutofillHints.email,
+          //ToDo
+          // code:  ,
         confirmPassword: newPasswordController.text,
-        //    password: ,
+            password: newPasswordController.text,
       );
       viewModel.ForgetPassword(model);
     }

@@ -16,13 +16,11 @@ class ResetByEmail extends StatefulWidget {
 class _ResetByEmailState extends State<ResetByEmail> implements ResetByEmailNavigator {
   TextEditingController resetByEmailController = TextEditingController();
   final formKey = GlobalKey<FormState>();
- // late ResetByEmailViewModel viewModel;
 
   ResetByEmailViewModel viewModel =ResetByEmailViewModel(injectAuthRepository());
   @override
   void initState() {
     super.initState();
-  //  viewModel = ResetByEmailViewModel(injectAuthRepository());
     viewModel.navigator = this;
   }
 
@@ -105,9 +103,8 @@ class _ResetByEmailState extends State<ResetByEmail> implements ResetByEmailNavi
 
   @override
   void hideLoading() {
-    DialogUtils.showProgress(context, "Hide Loading");
+    DialogUtils.showProgress(context, "");
   }
-
   @override
   void showMessage(
       String message, {
@@ -126,12 +123,10 @@ class _ResetByEmailState extends State<ResetByEmail> implements ResetByEmailNavi
       posActionTitle: posActionTitle,
     );
   }
-
   @override
   void showLoading() {
     DialogUtils.showProgress(context, "Loading");
   }
-
   void resetByEmailFunction() {
     if (formKey.currentState!.validate()==false) {
       return;

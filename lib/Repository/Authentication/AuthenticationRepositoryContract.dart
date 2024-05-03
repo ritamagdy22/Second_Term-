@@ -1,5 +1,4 @@
 import 'package:smart_parking_app/ApiManager/Request/ForgetPasswordRequest.dart';
-import 'package:smart_parking_app/ApiManager/Request/RequestCode.dart';
 import 'package:smart_parking_app/ApiManager/Response/ForgetPAsswordResponse.dart';
 import 'package:smart_parking_app/ApiManager/Response/LoginResponse.dart';
 import 'package:smart_parking_app/ApiManager/Response/RegisterResponse.dart';
@@ -7,9 +6,10 @@ import 'package:smart_parking_app/ApiManager/Response/ResponseCode.dart';
 import 'package:smart_parking_app/Repository/Authentication/AuthRepositoryImpl.dart';
 import 'package:smart_parking_app/Repository/DataSource/AuthRemoteDataSourceImplemintation.dart';
 
-//abstract class have methods without body
 abstract class AuthenticationRepositoryContract {
-// why we need it ? to be able to use with any diffrent pacakge http or dio
+/*
+Abstract class having methods and type of parameters w
+ */
   Future<String?> register(String name, String phone, String email,
       String password, String confirmPassword);
   Future<String?> login(String email, String password);
@@ -21,13 +21,9 @@ abstract class AuthenticationRepositoryContract {
 
 // another abstarct calss preparing the data from model class
 abstract class AuthReomteDataSource {
-  Future<RegisterResponseModel> register(String name, String phone,
-      String email, String password, String confirmPassword);
-
+  Future<RegisterResponseModel> register(String name, String phone, String email, String password, String confirmPassword);
   Future<LoginResponseModel> login(String email, String password);
-
   Future<ResponseCodeModel?> ResetByEmail(String email);
-
   // ToDo Method : ForgetPasswordByEmail
   Future<ForgetPasswordResponseModel> forgetPassword(
       ForgetPasswordRequestModel forgetPasswordRequest);

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smart_parking_app/ApiManager/Request/RequestCode.dart';
 import 'package:smart_parking_app/Repository/Authentication/AuthenticationRepositoryContract.dart';
 import 'package:smart_parking_app/UI/ResetByEmail/ResetByEmail.dart';
 import 'package:smart_parking_app/UI/ResetByEmail/ResetByEmailNavigator.dart';
@@ -10,10 +9,8 @@ class ResetByEmailViewModel extends ChangeNotifier {
   late ResetByEmailNavigator navigator;
 
   ResetByEmailViewModel(this.repositoryContract);
-
   resetByEmailFunction(String email) async {
     navigator.showLoading();
-
     try {
       var response = await repositoryContract.ResetByEmail(email);
       navigator.hideLoading();
