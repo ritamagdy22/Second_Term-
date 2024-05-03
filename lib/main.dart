@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       home: SplashScreen(),
+      //created new branch trying to merge
 
       //
     );
