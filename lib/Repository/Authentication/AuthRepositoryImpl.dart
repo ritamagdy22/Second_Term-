@@ -34,4 +34,12 @@ class AuthREpositoryImpl implements AuthenticationRepositoryContract {
     var response = await reomteDataSource.ResetByEmail(email);
     return response!.message;
   }
+
+  @override
+  Future<String?> CodeCheck(String error)async {
+
+
+    var response = await reomteDataSource.CodeCheck(error);
+    return response!.error;
+  }
 }

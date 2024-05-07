@@ -12,6 +12,8 @@ import 'package:smart_parking_app/widget/custom_Text_FormField.dart';
 
 class Password_and_ConfirmPassword extends StatefulWidget {
   Password_and_ConfirmPassword({Key? key}) : super(key: key);
+  static const PasswordAndConfirmPassword = "Password_and_ConfirmPassword";
+
 
   @override
   State<Password_and_ConfirmPassword> createState() =>
@@ -62,10 +64,6 @@ class _Password_and_ConfirmPasswordState
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  "Please enter the code you have received to reset your password",
-                  textAlign: TextAlign.center,
-                ),
                 const SizedBox(height: 20),
                 Align(
                   alignment: Alignment.centerLeft,
@@ -141,7 +139,7 @@ class _Password_and_ConfirmPasswordState
   @override
   void hideLoading() {
     // TODO: implement hideLoading
-    print("hideloading");
+    print("");
   }
 
   @override

@@ -53,7 +53,6 @@ class _ResetByEmailState extends State<ResetByEmail> implements ResetByEmailNavi
               height: 20,
               width: 10,
             ),
-
             Form(
               key: formKey,
               child: CustomTextFormField(
@@ -80,21 +79,19 @@ class _ResetByEmailState extends State<ResetByEmail> implements ResetByEmailNavi
               height: 20,
               width: 10,
             ),
+
             CustomButton(
-              title: "Continue",
+              title: "Send",
               onPressed: () {
-                resetByEmailFunction();
-              },
-            ),
-            const SizedBox(height: 20),
-            InkWell(
-              onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const Recivingcode()),
                 );
+                resetByEmailFunction();
               },
             ),
+
+
           ],
         ),
       ),

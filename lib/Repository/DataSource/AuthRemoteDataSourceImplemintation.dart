@@ -2,6 +2,7 @@ import 'package:http/http.dart';
 import 'package:smart_parking_app/ApiManager/ApiManager.dart';
 import 'package:smart_parking_app/ApiManager/Request/ForgetPasswordRequest.dart';
 import 'package:smart_parking_app/ApiManager/Request/RequestCode.dart';
+import 'package:smart_parking_app/ApiManager/Response/CodeCheckResponse.dart';
 import 'package:smart_parking_app/ApiManager/Response/ForgetPAsswordResponse.dart';
 import 'package:smart_parking_app/ApiManager/Response/LoginResponse.dart';
 import 'package:smart_parking_app/ApiManager/Response/RegisterResponse.dart';
@@ -42,6 +43,15 @@ class AuthRemoteDataSourceImpl implements AuthReomteDataSource {
     return response;
 
   }
+
+  @override
+  Future<CodeCheckResponse?> CodeCheck(String error)async {
+    var response = await apiManager.CodeCheck(error);
+    return response;
+  }
+
+
+
 }
 
 //ToDo Function ResetPassword

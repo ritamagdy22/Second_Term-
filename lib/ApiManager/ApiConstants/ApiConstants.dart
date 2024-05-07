@@ -5,6 +5,7 @@ class ApiConstants {
   static const String LoginApi = '/api/v1/user/signin';
   static const String RequestCode = '/api/v1/user/sendCode';
   static const String ForgetPasswordApi = '/api/v1/user/resetPassword';
+  static const String RecivingCodeCheckerApi= "/api/v1/user/checkresetcode";
 
  // https://smrtparking.azurewebsites.net/api/v1/user/sendCode
 

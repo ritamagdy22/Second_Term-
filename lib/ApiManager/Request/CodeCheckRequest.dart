@@ -1,4 +1,7 @@
 class CodeCheckRequest {
+  String? code;
+  String? email;
+
   CodeCheckRequest({
       this.code, 
       this.email,});
@@ -7,8 +10,6 @@ class CodeCheckRequest {
     code = json['code'];
     email = json['email'];
   }
-  String code;
-  String email;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
