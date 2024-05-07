@@ -6,7 +6,7 @@ import 'RecivingCodeNavigator.dart';
 class RecivingCodeViewModel extends ChangeNotifier{
 
   AuthenticationRepositoryContract repositoryContract;
-  late RecivingCodeNavigator navigator;
+  late ReceivingCodeNavigator navigator;
   RecivingCodeViewModel(this.repositoryContract);
 
   RecivingCodeFunction (String error)async{
