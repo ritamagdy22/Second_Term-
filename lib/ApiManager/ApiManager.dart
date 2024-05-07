@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_parking_app/ApiManager/ApiConstants/ApiConstants.dart';
 import 'package:http/http.dart' as http;
+import 'package:smart_parking_app/ApiManager/Request/CodeCheckRequest.dart';
 import 'package:smart_parking_app/ApiManager/Request/ForgetPasswordRequest.dart';
 import 'package:smart_parking_app/ApiManager/Request/LoginRequest.dart';
 import 'package:smart_parking_app/ApiManager/Request/RegisterRequest.dart';
@@ -139,7 +140,7 @@ class ApiManager {
   //Todo EditingRecivingCodeCHecker
   Future<CodeCheckResponse>CodeCheck( String error)async{
     var url = Uri.parse(ApiConstants.BaseURl + ApiConstants.RecivingCodeCheckerApi);
-    var requestbody = CodeCheckResponse(error: error);
+    var requestbody = CodeCheckRequest(  email: AutofillHints.email, code: error);
     debugPrint('> path: ${url.toString()}');
     debugPrint('> body: ${requestbody.toJson()}');
 

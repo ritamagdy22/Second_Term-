@@ -37,8 +37,6 @@ class AuthREpositoryImpl implements AuthenticationRepositoryContract {
 
   @override
   Future<String?> CodeCheck(String error)async {
-
-
     var response = await reomteDataSource.CodeCheck(error);
     return response!.error;
   }
