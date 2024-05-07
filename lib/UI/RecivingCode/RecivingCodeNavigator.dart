@@ -1,14 +1,14 @@
-import 'dart:html';
-
-abstract class RecivingCodeNavigator {
+abstract class ReceivingCodeNavigator {
   void showLoading();
+
   void hideLoading();
+
   void showMessage(
-      String message, {
-        String? posActionTitle,
-        String? negActionTitle,
-        VoidCallback? posAction,
-        VoidCallback? negAction,
-        bool isDismissible = true,
-      });
+    String message, {
+    String? posActionTitle,
+    String? negActionTitle,
+    void Function()? posAction,
+    void Function()? negAction,
+    bool isDismissible = true,
+  });
 }
