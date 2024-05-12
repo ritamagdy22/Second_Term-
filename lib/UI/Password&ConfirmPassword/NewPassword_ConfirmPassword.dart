@@ -25,6 +25,9 @@ class _Password_and_ConfirmPasswordState
     implements ForgetPasswordNavigator {
   TextEditingController newPasswordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
+  TextEditingController  CodeController= TextEditingController();
+  TextEditingController  EmailController= TextEditingController();
+
   final formKey = GlobalKey<FormState>();
   ForgetPasswordViewModel viewModel =
       ForgetPasswordViewModel(injectAuthRepository());
@@ -164,10 +167,11 @@ class _Password_and_ConfirmPasswordState
   void ForgetPassword() {
     if (formKey.currentState!.validate()) {
       final model = ForgetPasswordRequestModel(
-           email: AutofillHints.email,
+        //ToDo
+           email:EmailController.text,
           //ToDo
-          // code:  ,
-        confirmPassword: newPasswordController.text,
+           code:  CodeController.text,
+            confirmPassword: newPasswordController.text,
             password: newPasswordController.text,
       );
       viewModel.ForgetPassword(model);

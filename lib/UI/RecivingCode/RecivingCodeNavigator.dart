@@ -7,7 +7,8 @@ abstract class RecivingCodeNavigator {
       String message, {
         String? posActionTitle,
         String? negActionTitle,
-        VoidCallback? posAction,
+        //TODO it shows error while running
+       VoidCallback? posAction,
         VoidCallback? negAction,
         bool isDismissible = true,
       });
