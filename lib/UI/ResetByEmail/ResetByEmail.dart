@@ -13,11 +13,13 @@ class ResetByEmail extends StatefulWidget {
   State<ResetByEmail> createState() => _ResetByEmailState();
 }
 
-class _ResetByEmailState extends State<ResetByEmail> implements ResetByEmailNavigator {
+class _ResetByEmailState extends State<ResetByEmail>
+    implements ResetByEmailNavigator {
   TextEditingController resetByEmailController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
-  ResetByEmailViewModel viewModel =ResetByEmailViewModel(injectAuthRepository());
+  ResetByEmailViewModel viewModel =
+      ResetByEmailViewModel(injectAuthRepository());
   @override
   void initState() {
     super.initState();
@@ -47,7 +49,6 @@ class _ResetByEmailState extends State<ResetByEmail> implements ResetByEmailNavi
               height: 20,
               width: 10,
             ),
-
             FormLabelWidget(Label: "Email Address"),
             const SizedBox(
               height: 20,
@@ -62,7 +63,8 @@ class _ResetByEmailState extends State<ResetByEmail> implements ResetByEmailNavi
                   if (text == null || text.trim().isEmpty) {
                     return "Please Enter your Email";
                   }
-                  var emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                  var emailValid = RegExp(
+                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                       .hasMatch(text);
                   if (!emailValid) {
                     return "Email not valid";
@@ -71,27 +73,36 @@ class _ResetByEmailState extends State<ResetByEmail> implements ResetByEmailNavi
                 },
                 controller: resetByEmailController,
                 hintText: "Please Enter Your Email",
-
               ),
-
             ),
             const SizedBox(
-              height: 20,
-              width: 10,
+              height: 30,
+              width: 20,
             ),
-
             CustomButton(
               title: "Send",
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Recivingcode()),
-                );
                 resetByEmailFunction();
               },
             ),
-
-
+            const SizedBox(
+              height: 20,
+              width: 20,
+            ),
+            Container(
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Recivingcode()),
+                  );
+                },
+              ),
+            ),
+            SizedBox(
+              height: 20,
+              width: 20,
+            ),
           ],
         ),
       ),
@@ -102,15 +113,16 @@ class _ResetByEmailState extends State<ResetByEmail> implements ResetByEmailNavi
   void hideLoading() {
     DialogUtils.showProgress(context, "");
   }
+
   @override
   void showMessage(
-      String message, {
-        String? posActionTitle,
-        String? negActionTitle,
-        VoidCallback? posAction,
-        VoidCallback? negAction,
-        bool isDismissible = true,
-      }) {
+    String message, {
+    String? posActionTitle,
+    String? negActionTitle,
+    VoidCallback? posAction,
+    VoidCallback? negAction,
+    bool isDismissible = true,
+  }) {
     DialogUtils.showMessage(
       context,
       message,
@@ -120,16 +132,17 @@ class _ResetByEmailState extends State<ResetByEmail> implements ResetByEmailNavi
       posActionTitle: posActionTitle,
     );
   }
+
   @override
   void showLoading() {
     DialogUtils.showProgress(context, "Loading");
   }
+
   void resetByEmailFunction() {
-    if (formKey.currentState!.validate()==false) {
+    if (formKey.currentState!.validate() == false) {
       return;
-    }else
-      {
-        viewModel.resetByEmailFunction(resetByEmailController.text);
-      }
+    } else {
+      viewModel.resetByEmailFunction(resetByEmailController.text);
+    }
   }
 }

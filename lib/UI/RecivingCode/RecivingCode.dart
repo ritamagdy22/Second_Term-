@@ -6,8 +6,6 @@ import 'dart:async';
 
 // Other imports...
 
-
-
 import 'package:smart_parking_app/UI/Password&ConfirmPassword/NewPassword_ConfirmPassword.dart';
 import 'package:smart_parking_app/UI/RecivingCode/RecivingCodeNavigator.dart';
 import 'package:smart_parking_app/UI/RecivingCode/RecivingCodeViewModel.dart';
@@ -28,12 +26,13 @@ class Recivingcode extends StatefulWidget {
   State<Recivingcode> createState() => _RecivingcodeState();
 }
 
-class _RecivingcodeState extends State<Recivingcode>implements RecivingCodeNavigator {
+class _RecivingcodeState extends State<Recivingcode>
+    implements RecivingCodeNavigator {
   TextEditingController RecivingcodeController = TextEditingController();
   final formkey = GlobalKey<FormState>();
 
-  RecivingCodeViewModel ViewModel = RecivingCodeViewModel(injectAuthRepository());
-
+  RecivingCodeViewModel ViewModel =
+      RecivingCodeViewModel(injectAuthRepository());
 
   @override
   void initState() {
@@ -44,9 +43,8 @@ class _RecivingcodeState extends State<Recivingcode>implements RecivingCodeNavig
 
   @override
   Widget build(BuildContext context) {
-
     return ChangeNotifierProvider(
-      create: (context)=>ViewModel,
+      create: (context) => ViewModel,
       child: SafeArea(
           child: Scaffold(
               appBar: appBarWidget(context: context),
@@ -73,7 +71,8 @@ class _RecivingcodeState extends State<Recivingcode>implements RecivingCodeNavig
                               Form(
                                 key: formkey,
                                 child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
                                   children: [
                                     const SizedBox(
                                       height: 30,
@@ -104,13 +103,23 @@ class _RecivingcodeState extends State<Recivingcode>implements RecivingCodeNavig
                                       height: 30,
                                       width: 10,
                                     ),
+                                    const SizedBox(
+                                      height: 30,
+                                      width: 10,
+                                    ),
+                                    Container(
+                                      child: InkWell(
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    Password_and_ConfirmPassword(),
+                                              ));
+                                        },
+                                      ),
+                                    ),
 
-                                    CustomButton(
-                                        title: "Verify",
-                                        onPressed: () {
-                                          RecivingCodeFunction();
-
-                                        }),
                                   ],
                                 ),
                               ),
@@ -123,28 +132,24 @@ class _RecivingcodeState extends State<Recivingcode>implements RecivingCodeNavig
     );
   }
 
-
-
   @override
   void hideLoading() {
     // TODO: I have to implement hideLoading (it's not correct yet )
-    Text("hideloading");
-
+    Text("");
   }
 
   @override
   void showLoading() {
     DialogUtils.showProgress(context, "Loading");
-
   }
 
   @override
   void showMessage(String message,
       {String? posActionTitle,
-        String? negActionTitle,
-        VoidCallback? posAction,
-        VoidCallback? negAction,
-        bool isDismissible = true}) {
+      String? negActionTitle,
+      VoidCallback? posAction,
+      VoidCallback? negAction,
+      bool isDismissible = true}) {
     DialogUtils.showMessage(context, message,
         isDismissible: isDismissible,
         negAction: negAction,
@@ -152,16 +157,11 @@ class _RecivingcodeState extends State<Recivingcode>implements RecivingCodeNavig
         posActionTitle: posActionTitle);
   }
 
-
-
-  void RecivingCodeFunction (){
-    if (formkey.currentState!.validate() == false){
+  void RecivingCodeFunction() {
+    if (formkey.currentState!.validate() == false) {
       return;
-    }else{
+    } else {
       ViewModel.RecivingCodeFunction(RecivingcodeController.text);
     }
   }
-
-
 }
-

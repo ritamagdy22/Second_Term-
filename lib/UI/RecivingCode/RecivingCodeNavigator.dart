@@ -1,4 +1,3 @@
-import 'dart:html';
 
 abstract class RecivingCodeNavigator {
   void showLoading();
@@ -8,8 +7,8 @@ abstract class RecivingCodeNavigator {
         String? posActionTitle,
         String? negActionTitle,
         //TODO it shows error while running
-       VoidCallback? posAction,
-        VoidCallback? negAction,
+     //  VoidCallback? posAction,
+       // VoidCallback? negAction,
         bool isDismissible = true,
       });
 }
