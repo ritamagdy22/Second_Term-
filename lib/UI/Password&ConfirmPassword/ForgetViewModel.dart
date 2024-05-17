@@ -17,7 +17,7 @@ class ForgetPasswordViewModel extends ChangeNotifier {
 
     try {
       var response =
-          await repositoryContract.ForgetPassword(forgetPasswordRequest);
+      await repositoryContract.ForgetPassword(forgetPasswordRequest);
       navigator.hideLoading();
       navigator.showMessage("password reset succesfflly");
     } catch (e) {

@@ -11,8 +11,10 @@ import 'package:smart_parking_app/widget/Form_Label_Widget.dart';
 import 'package:smart_parking_app/widget/custom_Text_FormField.dart';
 
 class Password_and_ConfirmPassword extends StatefulWidget {
-  Password_and_ConfirmPassword({Key? key}) : super(key: key);
+  Password_and_ConfirmPassword({Key? key, required this.email}) : super(key: key);
   static const PasswordAndConfirmPassword = "Password_and_ConfirmPassword";
+
+  final String? email;
 
 
   @override
@@ -25,8 +27,7 @@ class _Password_and_ConfirmPasswordState
     implements ForgetPasswordNavigator {
   TextEditingController newPasswordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
-  TextEditingController  CodeController= TextEditingController();
-  TextEditingController  EmailController= TextEditingController();
+
 
   final formKey = GlobalKey<FormState>();
   ForgetPasswordViewModel viewModel =
@@ -115,7 +116,7 @@ class _Password_and_ConfirmPasswordState
                     padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
                   ),
                   onPressed: () {
-                    ForgetPassword();
+                    SetNewPassword();
                     if (formKey.currentState!.validate()) {
                       // Form is valid, proceed with password reset
                       Navigator.push(
@@ -164,13 +165,12 @@ class _Password_and_ConfirmPasswordState
         posActionTitle: posActionTitle);
   }
 
-  void ForgetPassword() {
+  void SetNewPassword() {
     if (formKey.currentState!.validate()) {
       final model = ForgetPasswordRequestModel(
         //ToDo
-           email:EmailController.text,
+           email:widget.email,
           //ToDo
-           code:  CodeController.text,
             confirmPassword: newPasswordController.text,
             password: newPasswordController.text,
       );

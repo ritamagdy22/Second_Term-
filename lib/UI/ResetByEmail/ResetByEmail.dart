@@ -79,30 +79,23 @@ class _ResetByEmailState extends State<ResetByEmail>
               height: 30,
               width: 20,
             ),
+
+            //Todo must handle button when to navigate
             CustomButton(
               title: "Send",
               onPressed: () {
                 resetByEmailFunction();
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Recivingcode(email: viewModel.email)),
+                    );
+                  },
+                );
               },
             ),
-            const SizedBox(
-              height: 20,
-              width: 20,
-            ),
-            Container(
-              child: InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Recivingcode()),
-                  );
-                },
-              ),
-            ),
-            SizedBox(
-              height: 20,
-              width: 20,
-            ),
+
           ],
         ),
       ),
