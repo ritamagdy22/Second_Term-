@@ -30,7 +30,6 @@ abstract class AuthReomteDataSource {
   Future<LoginResponseModel> login(String email, String password);
   Future<ResponseCodeModel?> ResetByEmail(String email);
   Future<CodeCheckResponse?> CodeCheck(String error);
-  // ToDo Method : ForgetPasswordByEmail
   Future<ForgetPasswordResponseModel> forgetPassword(
       ForgetPasswordRequestModel forgetPasswordRequest);
   Future<PriceResponseModel>Price(

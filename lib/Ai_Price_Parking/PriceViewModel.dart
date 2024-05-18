@@ -4,16 +4,17 @@ import '../Repository/Authentication/AuthenticationRepositoryContract.dart';
 import 'PriceNavigator.dart';
 class ParkingViewModel extends ChangeNotifier{
   AuthenticationRepositoryContract repositoryContract;
+
 late ParkingPriceNavigator navigator;
 
   ParkingViewModel(this.repositoryContract);
 
-Price( PriceRequestModel priceRequestModel)async{
+Price(PriceRequestModel priceRequestModel)async{
   navigator.showLoading();
   try{
     var response = await repositoryContract.Price(priceRequestModel);
     navigator.hideLoading();
-    navigator.showMessage("Final price");
+    navigator.showMessage(response.toString());
   }catch (e) {
     navigator.hideLoading();
     navigator.showMessage(e.toString() + " Error to show price");

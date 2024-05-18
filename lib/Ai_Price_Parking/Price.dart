@@ -157,16 +157,7 @@ class _ParkingDetailsState extends State<ParkingDetails>
 
                     const SizedBox(height: 30),
 
-                    //TODO waiting response must be handled
-                    // ElevatedButton(
-                    //   onPressed: () {},
-                    //   child: const Text(
-                    //     //TODO waiting prediction price to be here
-                    //     " ${} ",
-                    //     style: TextStyle(fontSize: 24),
-                    //   ),
-                    // ),
-                    const SizedBox(height: 30),
+
                     CustomButton(
                       title: "Pay Now",
                       onPressed: () {
@@ -206,8 +197,16 @@ class _ParkingDetailsState extends State<ParkingDetails>
       });
 
       final priceObject = PriceRequestModel(
+          hourIn: DateTime.now().hour.toString(),
+          minuteIn: DateTime.now().minute.toString(),
+          day: DateTime.now().day.toString(),
+          month: DateTime.now().month.toString(),
           hourOut: _endTime.hour.toString(),
           minuteOut: _endTime.minute.toString());
+
+          viewModel.Price(priceObject);
+     print(priceObject.toJson());
+
     }
   }
 
@@ -235,11 +234,7 @@ class _ParkingDetailsState extends State<ParkingDetails>
         posActionTitle: posActionTitle);
   }
 
-  //Todo Implement PriceRequest
-  void ShowPrice() {
-    final model = PriceRequestModel();
-    viewModel.Price(model);
-  }
+
 }
 
 /*
