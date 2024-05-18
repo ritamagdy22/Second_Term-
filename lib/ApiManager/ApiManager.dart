@@ -167,7 +167,7 @@ class ApiManager {
     var url = Uri.parse(ApiConstants.BaseURl + ApiConstants.ForgetPasswordApi);
     debugPrint('> path: ${url.toString()}');
     debugPrint('> body: ${forgetPasswordRequest.toJson()}');
-    var response = await http.post(
+    var response = await http.patch(
       url,
       body: json.encode(forgetPasswordRequest.toJson()),
       headers: {
@@ -184,12 +184,10 @@ class ApiManager {
   }
 
   Future<PriceResponseModel> Price(PriceRequestModel priceRequestModel) async {
-    var url = Uri.parse(ApiConstants.BaseURl + ApiConstants.AiPrice);
-    // todo: re recursion
+    var url = Uri.parse(ApiConstants.AIBaseURl + ApiConstants.AiPrice);
     debugPrint('> path: ${url.toString()}');
-    var response = await http.patch(
+    var response = await http.post(
       url,
-      //Todo body: json.encode(requestbody.ToJson()),
       body: json.encode(priceRequestModel.toJson()),
       headers: {
         'Content-Type': 'application/json',
@@ -200,29 +198,6 @@ class ApiManager {
       throw Exception(
           jsonDecode(response.body)?['message'] ?? 'Error occurred!');
     }
-
     return PriceResponseModel.fromJson(jsonDecode(response.body));
   }
 }
-/*
-  Future<ResponseCodeModel> ResetByEmail(String email) async {
-    var url = Uri.parse(ApiConstants.BaseURl + ApiConstants.RequestCode);
-    var requestbody = RequestCodeModel(email: email);
-    debugPrint('> path: ${url.toString()}');
-    debugPrint('> body: ${requestbody.toJson()}');
-    var response = await http.patch(
-      url,
-      body: json.encode(requestbody.toJson()),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    );
-    debugPrint('> response: [${response.statusCode}] ${response.body}');
-    if (response.statusCode != 200) {
-      throw Exception(
-          jsonDecode(response.body)?['message'] ?? 'Error occurred!');
-    }
-    return ResponseCodeModel.fromJson(jsonDecode(response.body));
-  }
-
- */

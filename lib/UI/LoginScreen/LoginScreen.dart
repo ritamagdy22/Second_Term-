@@ -205,9 +205,7 @@ class _LoginScreenState extends State<LoginScreen> implements LoginNavigator {
 
   @override
   void hideLoading() {
-    //Done
     Navigator.pop(context);
-
   }
 
   @override

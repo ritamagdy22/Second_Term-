@@ -33,14 +33,13 @@ class _ParkingDetailsState extends State<ParkingDetails>
 
   TimeOfDay _endTime = TimeOfDay.now();
 
-  ParkingViewModel viewModel =ParkingViewModel(injectAuthRepository());
-
+  ParkingViewModel viewModel = ParkingViewModel(injectAuthRepository());
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    viewModel.navigator= this;
+    viewModel.navigator = this;
   }
 
   @override
@@ -48,7 +47,7 @@ class _ParkingDetailsState extends State<ParkingDetails>
     MediaQuery.of(context).size;
 
     return ChangeNotifierProvider<ParkingViewModel>(
-      create: (context)=> viewModel ,
+      create: (context) => viewModel,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
@@ -72,7 +71,7 @@ class _ParkingDetailsState extends State<ParkingDetails>
                 firstDay: DateTime.utc(2010, 10, 16),
                 lastDay: DateTime.utc(2030, 3, 14),
                 focusedDay: _focusedDay,
-          
+
                 selectedDayPredicate: (day) {
                   return isSameDay(_selectedDay, day);
                 },
@@ -82,7 +81,7 @@ class _ParkingDetailsState extends State<ParkingDetails>
                     _focusedDay = focusedDay ?? selectedDay;
                   });
                 },
-          
+
                 calendarFormat: _calendarFormat,
                 onFormatChanged: (format) {
                   setState(() {
@@ -106,7 +105,8 @@ class _ParkingDetailsState extends State<ParkingDetails>
                   children: [
                     Text(
                       "Duration",
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     ),
                   ],
                 ),
@@ -131,8 +131,8 @@ class _ParkingDetailsState extends State<ParkingDetails>
                       children: [
                         Text(
                           "Start Date",
-                          style:
-                              TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
                         ),
                         SizedBox(width: 150),
                         TextButton(
@@ -144,19 +144,19 @@ class _ParkingDetailsState extends State<ParkingDetails>
                         ),
                       ],
                     ),
-          
+
                     Row(
                       children: [
                         Text(
                           'at:${DateFormat('h:mm a').format(DateFormat("yyyy-MM-dd hh:mm:ss").parse(DateTime.now().toString()))}',
-                          style:
-                              const TextStyle(color: Colors.indigo, fontSize: 18),
+                          style: const TextStyle(
+                              color: Colors.indigo, fontSize: 18),
                         ),
                       ],
                     ),
-          
+
                     const SizedBox(height: 30),
-          
+
                     //TODO waiting response must be handled
                     // ElevatedButton(
                     //   onPressed: () {},
@@ -203,24 +203,22 @@ class _ParkingDetailsState extends State<ParkingDetails>
     if (pickedEndTime != null) {
       setState(() {
         _endTime = pickedEndTime;
-
       });
 
       final priceObject = PriceRequestModel(
-        hourOut: _endTime.hour.toString(),
-        minuteOut: _endTime.minute.toString()
-      );
+          hourOut: _endTime.hour.toString(),
+          minuteOut: _endTime.minute.toString());
     }
   }
 
   @override
   void hideLoading() {
-    // TODO: implement hideLoading
+    Navigator.pop(context);
   }
 
   @override
   void showLoading() {
-    // TODO: implement showLoading
+    DialogUtils.showProgress(context, "Loading");
   }
 
   @override
@@ -235,13 +233,18 @@ class _ParkingDetailsState extends State<ParkingDetails>
         negAction: negAction,
         posAction: posAction,
         posActionTitle: posActionTitle);
-    // TODO: implement showMessage
+  }
+
+  //Todo Implement PriceRequest
+  void ShowPrice() {
+    final model = PriceRequestModel();
+    viewModel.Price(model);
   }
 }
 
 /*
 
-old trail
+old  class  trail
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/intl.dart';

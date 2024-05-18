@@ -111,8 +111,7 @@ class _RecivingcodeState extends State<Recivingcode>
 
   @override
   void hideLoading() {
-    // TODO: I have to implement hideLoading (it's not correct yet )
-    Text("");
+    Navigator.pop(context);
   }
 
   @override
@@ -134,6 +133,16 @@ class _RecivingcodeState extends State<Recivingcode>
         posActionTitle: posActionTitle);
   }
 
+  @override
+  Future<void> navigate() async{
+    Navigator.pop(context);
+    Navigator.push(
+               context,
+               MaterialPageRoute(
+                 builder: (context) => Password_and_ConfirmPassword(email: widget.email),
+              ));
+  }
+
   void RecivingCodeFunction() {
     if (formkey.currentState!.validate() == false) {
       return;
@@ -141,6 +150,8 @@ class _RecivingcodeState extends State<Recivingcode>
       ViewModel.RecivingCodeFunction(RecivingcodeController.text);
     }
   }
+
+
 }
 
 /*

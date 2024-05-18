@@ -21,6 +21,9 @@ class ResetByEmailViewModel extends ChangeNotifier {
       var response = await repositoryContract.ResetByEmail(email);
       navigator.hideLoading();
       navigator.showMessage("Code sent to your email to reset your password");
+      await Future.delayed(const Duration(milliseconds: 1200));
+      navigator.navigate();
+
       _email = email;
     } catch (e) {
       navigator.hideLoading();

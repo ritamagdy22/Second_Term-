@@ -89,13 +89,14 @@ class _ResetByEmailState extends State<ResetByEmail>
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Recivingcode(email: viewModel.email)),
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              Recivingcode(email: viewModel.email)),
                     );
                   },
                 );
               },
             ),
-
           ],
         ),
       ),
@@ -104,7 +105,7 @@ class _ResetByEmailState extends State<ResetByEmail>
 
   @override
   void hideLoading() {
-    DialogUtils.showProgress(context, "");
+    Navigator.pop(context);
   }
 
   @override
@@ -131,6 +132,20 @@ class _ResetByEmailState extends State<ResetByEmail>
     DialogUtils.showProgress(context, "Loading");
   }
 
+  @override
+  Future<void> navigate() async {
+    Navigator.pop(context);
+
+    ///Todo must check where to navigate
+
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Recivingcode(email: AutofillHints.email),
+        ));
+
+  }
+
   void resetByEmailFunction() {
     if (formKey.currentState!.validate() == false) {
       return;
@@ -138,4 +153,6 @@ class _ResetByEmailState extends State<ResetByEmail>
       viewModel.resetByEmailFunction(resetByEmailController.text);
     }
   }
+
+
 }

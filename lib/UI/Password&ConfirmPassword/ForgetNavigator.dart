@@ -10,4 +10,6 @@ abstract class ForgetPasswordNavigator {
     VoidCallback? negAction,
     bool isDismissible = true,
   });
+  Future<void> navigate();
+
 }

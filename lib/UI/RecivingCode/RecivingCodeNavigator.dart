@@ -11,4 +11,6 @@ abstract class RecivingCodeNavigator {
        // VoidCallback? negAction,
         bool isDismissible = true,
       });
+  Future<void> navigate();
+
 }

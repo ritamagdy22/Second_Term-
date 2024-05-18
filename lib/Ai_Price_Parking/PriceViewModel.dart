@@ -1,9 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:smart_parking_app/ApiManager/Request/PriceRequestModel.dart';
-
 import '../Repository/Authentication/AuthenticationRepositoryContract.dart';
 import 'PriceNavigator.dart';
-
 class ParkingViewModel extends ChangeNotifier{
   AuthenticationRepositoryContract repositoryContract;
 late ParkingPriceNavigator navigator;
