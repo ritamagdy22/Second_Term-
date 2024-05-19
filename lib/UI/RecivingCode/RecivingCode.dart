@@ -23,8 +23,8 @@ class Recivingcode extends StatefulWidget {
   State<Recivingcode> createState() => _RecivingcodeState();
 }
 
-class _RecivingcodeState extends State<Recivingcode>
-    implements RecivingCodeNavigator {
+
+class _RecivingcodeState extends State<Recivingcode>implements ReceivingCodeNavigator {
   TextEditingController RecivingcodeController = TextEditingController();
   final formkey = GlobalKey<FormState>();
 

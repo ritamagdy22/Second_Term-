@@ -1,7 +1,10 @@
 
-abstract class RecivingCodeNavigator {
+abstract class ReceivingCodeNavigator {
+
   void showLoading();
+
   void hideLoading();
+
   void showMessage(
       String message, {
         String? posActionTitle,
@@ -14,3 +17,4 @@ abstract class RecivingCodeNavigator {
   Future<void> navigate();
 
 }
+
