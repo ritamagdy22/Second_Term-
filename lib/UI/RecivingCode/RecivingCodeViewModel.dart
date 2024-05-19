@@ -16,8 +16,9 @@ class RecivingCodeViewModel extends ChangeNotifier{
       var response = await repositoryContract.CodeCheck(error);
       navigator.hideLoading();
       navigator.showMessage("Code verified ");
-      //hideloading
-      //showmessage
+      await Future.delayed(const Duration(milliseconds: 1200));
+      navigator.navigate();
+
     } catch (e) {
       navigator.hideLoading();
       navigator.showMessage(e.toString() + " Error in code");

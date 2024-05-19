@@ -16,7 +16,9 @@ class LoginViewModel extends ChangeNotifier {
       var response = await repositoryContract.login(email, password);
       navigator.hideLoading();
       navigator.showMessage("Login successfully");
-      //hideloading
+      await Future.delayed(const Duration(milliseconds: 1200));
+      debugPrint('should navigate');
+      navigator.navigate();
       //showmessage
     } catch (e) {
       navigator.hideLoading();

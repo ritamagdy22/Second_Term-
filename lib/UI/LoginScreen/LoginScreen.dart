@@ -5,6 +5,7 @@ import 'package:smart_parking_app/Repository/Authentication/AuthenticationReposi
 import 'package:smart_parking_app/UI/LoginScreen/LoginNavigator.dart';
 import 'package:smart_parking_app/UI/LoginScreen/LoginViewModel.dart';
 import 'package:smart_parking_app/widget/DialogUtils.dart';
+import '../../Ai_Price_Parking/Price.dart';
 import '../../widget/Custom_Button.dart';
 import '../../widget/Form_Label_Widget.dart';
 import '../../widget/custom_Text_FormField.dart';
@@ -91,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen> implements LoginNavigator {
                     width: 10,
                   ),
 
-                  
+
                   Form(
                     key: formkey,
                     child: CustomTextFormField(
@@ -145,7 +146,7 @@ class _LoginScreenState extends State<LoginScreen> implements LoginNavigator {
                       title: "Login",
                       onPressed: () {
                         Login();
-                      
+
                       }),
                   const SizedBox(
                     height: 20,
@@ -204,10 +205,7 @@ class _LoginScreenState extends State<LoginScreen> implements LoginNavigator {
 
   @override
   void hideLoading() {
-    // TODO: implement hideLoading
-
-    //todo
-    Text("hideloading");
+    Navigator.pop(context);
   }
 
   @override
@@ -227,6 +225,17 @@ class _LoginScreenState extends State<LoginScreen> implements LoginNavigator {
         negAction: negAction,
         posAction: posAction,
         posActionTitle: posActionTitle);
+  }
+
+  @override
+  Future<void> navigate() async {
+    // hide the success dialog
+    Navigator.pop(context);
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const ParkingDetails(),
+        ));
   }
 
   void Login() {

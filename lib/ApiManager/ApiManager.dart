@@ -1,17 +1,19 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
-import 'package:smart_parking_app/ApiManager/ApiConstants/ApiConstants.dart';
 import 'package:http/http.dart' as http;
+import 'package:smart_parking_app/ApiManager/ApiConstants/ApiConstants.dart';
+import 'package:smart_parking_app/ApiManager/Request/CodeCheckRequest.dart';
 import 'package:smart_parking_app/ApiManager/Request/ForgetPasswordRequest.dart';
 import 'package:smart_parking_app/ApiManager/Request/LoginRequest.dart';
+import 'package:smart_parking_app/ApiManager/Request/PriceRequestModel.dart';
 import 'package:smart_parking_app/ApiManager/Request/RegisterRequest.dart';
 import 'package:smart_parking_app/ApiManager/Response/CodeCheckResponse.dart';
 import 'package:smart_parking_app/ApiManager/Response/ForgetPAsswordResponse.dart';
 import 'package:smart_parking_app/ApiManager/Response/LoginResponse.dart';
+import 'package:smart_parking_app/ApiManager/Response/PriceResponseModel.dart';
 import 'package:smart_parking_app/ApiManager/Response/RegisterResponse.dart';
 import 'package:smart_parking_app/ApiManager/Response/ResponseCode.dart';
-import 'package:smart_parking_app/UI/ResetByEmail/ResetByEmail.dart';
 
 import 'Request/RequestCode.dart';
 
@@ -135,11 +137,11 @@ class ApiManager {
     return ResponseCodeModel.fromJson(jsonDecode(response.body));
   }
 
-
   //Todo EditingRecivingCodeCHecker
-  Future<CodeCheckResponse>CodeCheck( String error)async{
-    var url = Uri.parse(ApiConstants.BaseURl + ApiConstants.RecivingCodeCheckerApi);
-    var requestbody = CodeCheckResponse(error: error);
+  Future<CodeCheckResponse> CodeCheck(String error) async {
+    var url =
+        Uri.parse(ApiConstants.BaseURl + ApiConstants.RecivingCodeCheckerApi);
+    var requestbody = CodeCheckRequest(email: AutofillHints.email, code: error);
     debugPrint('> path: ${url.toString()}');
     debugPrint('> body: ${requestbody.toJson()}');
 
@@ -158,18 +160,14 @@ class ApiManager {
           jsonDecode(response.body)?['message'] ?? 'Error occurred!');
     }
     return CodeCheckResponse.fromJson(jsonDecode(response.body));
-
-
-
   }
-
 
   Future<ForgetPasswordResponseModel> ForgetPassword(
       ForgetPasswordRequestModel forgetPasswordRequest) async {
     var url = Uri.parse(ApiConstants.BaseURl + ApiConstants.ForgetPasswordApi);
     debugPrint('> path: ${url.toString()}');
     debugPrint('> body: ${forgetPasswordRequest.toJson()}');
-    var response = await http.post(
+    var response = await http.patch(
       url,
       body: json.encode(forgetPasswordRequest.toJson()),
       headers: {
@@ -183,5 +181,23 @@ class ApiManager {
     }
 
     return ForgetPasswordResponseModel.fromJson(jsonDecode(response.body));
+  }
+
+  Future<PriceResponseModel> Price(PriceRequestModel priceRequestModel) async {
+    var url = Uri.parse(ApiConstants.AIBaseURl + ApiConstants.AiPrice);
+    debugPrint('> path: ${url.toString()}');
+    var response = await http.post(
+      url,
+      body: json.encode(priceRequestModel.toJson()),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    );
+    debugPrint('> response: [${response.statusCode}] ${response.body}');
+    if (response.statusCode != 200) {
+      throw Exception(
+          jsonDecode(response.body)?['message'] ?? 'Error occurred!');
+    }
+    return PriceResponseModel.fromJson(jsonDecode(response.body));
   }
 }

@@ -11,8 +11,10 @@ import 'package:smart_parking_app/widget/Form_Label_Widget.dart';
 import 'package:smart_parking_app/widget/custom_Text_FormField.dart';
 
 class Password_and_ConfirmPassword extends StatefulWidget {
-  Password_and_ConfirmPassword({Key? key}) : super(key: key);
+  Password_and_ConfirmPassword({Key? key, required this.email}) : super(key: key);
   static const PasswordAndConfirmPassword = "Password_and_ConfirmPassword";
+
+  final String? email;
 
 
   @override
@@ -25,6 +27,8 @@ class _Password_and_ConfirmPasswordState
     implements ForgetPasswordNavigator {
   TextEditingController newPasswordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
+
+
   final formKey = GlobalKey<FormState>();
   ForgetPasswordViewModel viewModel =
       ForgetPasswordViewModel(injectAuthRepository());
@@ -55,80 +59,82 @@ class _Password_and_ConfirmPasswordState
             },
           ),
         ),
-        body: Container(
-          padding: EdgeInsets.all(20),
-          alignment: Alignment.center,
-          child: Form(
-            key: formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(height: 20),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: FormLabelWidget(Label: "New Password"),
-                ),
-                const SizedBox(height: 10),
-                CustomTextFormField(
-                  Type: TextInputType.visiblePassword,
-                  validator: (text) {
-                    if (text == null || text.trim().isEmpty) {
-                      return "Please enter a new password";
-                    }
-                    if (text.length < 6) {
-                      return "Password must be at least 6 characters long";
-                    }
-                    return null;
-                  },
-                  controller: newPasswordController,
-                  hintText: "New Password",
-                ),
-                const SizedBox(height: 10),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: FormLabelWidget(Label: "Confirm New Password"),
-                ),
-                const SizedBox(height: 10),
-                CustomTextFormField(
-                  Type: TextInputType.visiblePassword,
-                  validator: (text) {
-                    if (text == null || text.trim().isEmpty) {
-                      return "Please confirm your new password";
-                    }
-                    if (text != newPasswordController.text) {
-                      return "Passwords do not match";
-                    }
-                    return null;
-                  },
-                  controller: confirmPasswordController,
-                  hintText: "Confirm New Password",
-                ),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
-                    disabledBackgroundColor: Colors.white,
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
+        body: SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.all(20),
+            alignment: Alignment.center,
+            child: Form(
+              key: formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 20),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: FormLabelWidget(Label: "New Password"),
                   ),
-                  onPressed: () {
-                    ForgetPassword();
-                    if (formKey.currentState!.validate()) {
-                      // Form is valid, proceed with password reset
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => LoginScreen(),
-                        ),
-                      );
-                    }
-                  },
-                  child: const Text(
-                    'Verify',
-                    style: TextStyle(fontSize: 20),
+                  const SizedBox(height: 10),
+                  CustomTextFormField(
+                    Type: TextInputType.visiblePassword,
+                    validator: (text) {
+                      if (text == null || text.trim().isEmpty) {
+                        return "Please enter a new password";
+                      }
+                      if (text.length < 6) {
+                        return "Password must be at least 6 characters long";
+                      }
+                      return null;
+                    },
+                    controller: newPasswordController,
+                    hintText: "New Password",
                   ),
-                ),
-              ],
+                  const SizedBox(height: 10),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: FormLabelWidget(Label: "Confirm New Password"),
+                  ),
+                  const SizedBox(height: 10),
+                  CustomTextFormField(
+                    Type: TextInputType.visiblePassword,
+                    validator: (text) {
+                      if (text == null || text.trim().isEmpty) {
+                        return "Please confirm your new password";
+                      }
+                      if (text != newPasswordController.text) {
+                        return "Passwords do not match";
+                      }
+                      return null;
+                    },
+                    controller: confirmPasswordController,
+                    hintText: "Confirm New Password",
+                  ),
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.black,
+                      disabledBackgroundColor: Colors.white,
+                      padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
+                    ),
+                    onPressed: () {
+                      SetNewPassword();
+                      if (formKey.currentState!.validate()) {
+                        // Form is valid, proceed with password reset
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginScreen(),
+                          ),
+                        );
+                      }
+                    },
+                    child: const Text(
+                      'Verify',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -138,8 +144,8 @@ class _Password_and_ConfirmPasswordState
 
   @override
   void hideLoading() {
-    // TODO: implement hideLoading
-    print("");
+    Navigator.pop(context);
+
   }
 
   @override
@@ -161,16 +167,29 @@ class _Password_and_ConfirmPasswordState
         posActionTitle: posActionTitle);
   }
 
-  void ForgetPassword() {
+  @override
+  Future<void> navigate() async{
+    Navigator.pop(context);
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const LoginScreen(),
+        ));
+  }
+
+  void SetNewPassword() {
     if (formKey.currentState!.validate()) {
       final model = ForgetPasswordRequestModel(
-           email: AutofillHints.email,
-          //ToDo
-          // code:  ,
-        confirmPassword: newPasswordController.text,
+        //ToDo is done
+           email:widget.email,
+          //ToDo is done
+            confirmPassword: newPasswordController.text,
             password: newPasswordController.text,
       );
       viewModel.ForgetPassword(model);
     }
   }
+
+
 }
+

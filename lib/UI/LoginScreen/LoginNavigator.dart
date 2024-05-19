@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
+
 abstract class LoginNavigator {
   void showLoading();
   void hideLoading();
@@ -11,4 +13,6 @@ abstract class LoginNavigator {
     VoidCallback? negAction,
     bool isDismissible = true,
   });
+  /// This function called when login is success and want to navigate to HomeScreen
+  Future<void> navigate();
 }

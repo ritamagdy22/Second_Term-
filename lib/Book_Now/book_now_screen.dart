@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../widget/Custom_Button.dart';
-import 'Parking_Details.dart';
+import '../Ai_Price_Parking/Price.dart';
 
 class BookNowScreen extends StatelessWidget {
   const BookNowScreen({Key? key}) : super(key: key);

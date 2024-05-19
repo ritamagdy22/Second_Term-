@@ -1,7 +1,9 @@
 import 'package:smart_parking_app/ApiManager/Request/ForgetPasswordRequest.dart';
+import 'package:smart_parking_app/ApiManager/Request/PriceRequestModel.dart';
 import 'package:smart_parking_app/ApiManager/Response/CodeCheckResponse.dart';
 import 'package:smart_parking_app/ApiManager/Response/ForgetPAsswordResponse.dart';
 import 'package:smart_parking_app/ApiManager/Response/LoginResponse.dart';
+import 'package:smart_parking_app/ApiManager/Response/PriceResponseModel.dart';
 import 'package:smart_parking_app/ApiManager/Response/RegisterResponse.dart';
 import 'package:smart_parking_app/ApiManager/Response/ResponseCode.dart';
 import 'package:smart_parking_app/Repository/Authentication/AuthRepositoryImpl.dart';
@@ -17,8 +19,8 @@ Abstract class having methods and type of parameters w
   Future<String?> ForgetPassword(
       ForgetPasswordRequestModel forgetPasswordRequest);
   Future<String?> ResetByEmail(String email);
-
   Future<String?>CodeCheck(String error);
+  Future<double?>Price(PriceRequestModel priceRequestModel);
 }
 
 // another abstarct calss preparing the data from model class
@@ -26,15 +28,12 @@ abstract class AuthReomteDataSource {
   Future<RegisterResponseModel> register(String name, String phone, String email, String password, String confirmPassword);
   Future<LoginResponseModel> login(String email, String password);
   Future<ResponseCodeModel?> ResetByEmail(String email);
-
   Future<CodeCheckResponse?> CodeCheck(String error);
-
-
-
-  // ToDo Method : ForgetPasswordByEmail
   Future<ForgetPasswordResponseModel> forgetPassword(
       ForgetPasswordRequestModel forgetPasswordRequest);
-// Todo Method : Reset ByEmail
+  Future<PriceResponseModel>Price(
+      PriceRequestModel priceRequestModel );
+
 }
 
 AuthenticationRepositoryContract injectAuthRepository() {

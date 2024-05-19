@@ -6,7 +6,7 @@ import 'package:smart_parking_app/UI/RegisterScreen/RegisterNavigator.dart';
 import 'package:smart_parking_app/UI/RegisterScreen/RegisterScreen_ViewModel.dart';
 import 'package:smart_parking_app/widget/DialogUtils.dart';
 
-import '../../Book_Now/Parking_Details.dart';
+import '../../Ai_Price_Parking/Price.dart';
 import '../../widget/Custom_Button.dart';
 import '../../widget/Form_Label_Widget.dart';
 import '../../widget/custom_Text_FormField.dart';

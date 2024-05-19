@@ -11,4 +11,7 @@ abstract class ResetByEmailNavigator {
     VoidCallback? negAction,
     bool isDismissible = true,
   });
+
+  Future<void> navigate();
+
 }
