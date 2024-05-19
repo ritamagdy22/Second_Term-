@@ -88,7 +88,8 @@ class _RecivingcodeState extends State<Recivingcode>
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                          Password_and_ConfirmPassword(email: widget.email),
+                                          Password_and_ConfirmPassword(
+                                              email: widget.email),
                                     ),
                                   );
                                 },
@@ -134,13 +135,14 @@ class _RecivingcodeState extends State<Recivingcode>
   }
 
   @override
-  Future<void> navigate() async{
+  Future<void> navigate() async {
     Navigator.pop(context);
     Navigator.push(
-               context,
-               MaterialPageRoute(
-                 builder: (context) => Password_and_ConfirmPassword(email: widget.email),
-              ));
+        context,
+        MaterialPageRoute(
+          builder: (context) =>
+              Password_and_ConfirmPassword(email: widget.email),
+        ));
   }
 
   void RecivingCodeFunction() {
@@ -150,96 +152,4 @@ class _RecivingcodeState extends State<Recivingcode>
       ViewModel.RecivingCodeFunction(RecivingcodeController.text);
     }
   }
-
-
 }
-
-/*
- return ChangeNotifierProvider(
-      create: (context) => ViewModel,
-      child: SafeArea(
-          child: Scaffold(
-              appBar: appBarWidget(context: context),
-              body: SingleChildScrollView(
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10),
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height,
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text("Verification code",
-                              style: TextStyle(
-                                fontSize: 30,
-                                color: Colors.black,
-                              )),
-                          const SizedBox(
-                            height: 20,
-                            width: 10,
-                          ),
-                          Form(
-                            key: formkey,
-                            child: Column(
-                              crossAxisAlignment:
-                                  CrossAxisAlignment.stretch,
-                              children: [
-                                const SizedBox(
-                                  height: 20,
-                                  width: 10,
-                                ),
-                                CustomTextFormField(
-                                    isPassword: false,
-                                    Type: TextInputType.name,
-                                    validator: (text) {
-                                      if (text == null ||
-                                          text.trim().isEmpty) {
-                                        return "Please Enter code";
-                                      } else {
-                                        null;
-                                        return null;
-                                      }
-                                    },
-                                    controller: RecivingcodeController,
-                                    hintText: "Enter verification code"),
-                                const SizedBox(
-                                  height: 20,
-                                  width: 20,
-                                ),
-
-                                CustomButton(
-                                    title: "Verify",
-                                    onPressed: () {
-                                      RecivingCodeFunction();
-                                    }),
-                                const SizedBox(
-                                  height: 20,
-                                  width: 20,
-                                ),
-
-                                Container(
-                                  child: InkWell(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>  Password_and_ConfirmPassword(),
-                                          ));
-                                    },
-                                  ),
-                                ),
-
-
-                              ],
-                            ),
-                          ),
-                        ]),
-                  ),
-                ),
-              ))),
-    );
-
-
-
- */

@@ -20,7 +20,6 @@ Abstract class having methods and type of parameters w
       ForgetPasswordRequestModel forgetPasswordRequest);
   Future<String?> ResetByEmail(String email);
   Future<String?>CodeCheck(String error);
-  //Todo LastAPI (price)
   Future<double?>Price(PriceRequestModel priceRequestModel);
 }
 
